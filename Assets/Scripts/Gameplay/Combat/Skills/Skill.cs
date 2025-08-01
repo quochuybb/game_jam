@@ -14,4 +14,8 @@ public class Skill : ScriptableObject
     public float damageMultiplier = 1.0f;
     public int healthToRestore = 0;
     public int stunTurns = 0;
+
+    [Header("Poison Effects")]
+    public int poisonDamage = 0;
+    public int poisonTurns = 0;
 }

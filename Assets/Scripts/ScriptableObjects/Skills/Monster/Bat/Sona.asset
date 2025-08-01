@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Sona
   description: 
-  energyCost: 2
+  energyCost: 3
   damageMultiplier: 0
   healthToRestore: 0
   stunTurns: 1
+  poisonDamage: 0
+  poisonTurns: 0

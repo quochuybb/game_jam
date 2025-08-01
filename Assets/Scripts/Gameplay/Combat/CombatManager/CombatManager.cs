@@ -118,6 +118,9 @@ public class CombatManager : MonoBehaviour
         if (skill.damageMultiplier > 0) { int damage = Mathf.RoundToInt(user.currentStats.currentDamage * skill.damageMultiplier); target.TakeDamage(damage); }
         if (skill.healthToRestore > 0) { user.Heal(skill.healthToRestore); }
         if (skill.stunTurns > 0) { target.ApplyStun(skill.stunTurns); }
+        
+        if (skill.poisonTurns > 0) { target.ApplyPoison(skill.poisonDamage, skill.poisonTurns); }
+
         combatUI.UpdateAllUI(player, monster);
     }
 

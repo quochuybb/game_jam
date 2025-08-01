@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Blood Suck
   description: 
-  energyCost: 3
+  energyCost: 2
   damageMultiplier: 0.5
   healthToRestore: 2
   stunTurns: 0
+  poisonDamage: 0
+  poisonTurns: 0

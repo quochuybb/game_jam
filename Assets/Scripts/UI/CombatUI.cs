@@ -14,6 +14,8 @@ public class CombatUI : MonoBehaviour
     public TextMeshProUGUI monsterHPText;
     public Image playerStunIcon;
     public Image monsterStunIcon;
+    public Image playerPoisonIcon;
+    public Image monsterPoisonIcon; 
 
     [Header("Action Buttons")]
     public Button skill1Button;
@@ -36,6 +38,8 @@ public class CombatUI : MonoBehaviour
 
         playerStunIcon.gameObject.SetActive(false);
         monsterStunIcon.gameObject.SetActive(false);
+        playerPoisonIcon.gameObject.SetActive(false); 
+        monsterPoisonIcon.gameObject.SetActive(false);
     }
 
     public void SetupSkillButtons(List<Skill> playerSkills)
@@ -64,6 +68,9 @@ public class CombatUI : MonoBehaviour
 
         playerStunIcon.gameObject.SetActive(player.IsStunned());
         monsterStunIcon.gameObject.SetActive(monster.IsStunned());
+        
+        playerPoisonIcon.gameObject.SetActive(player.IsPoisoned());
+        monsterPoisonIcon.gameObject.SetActive(monster.IsPoisoned());
     }
 
     public void SetActionButtonsInteractable(bool isPlayerTurn, Combatant player)
