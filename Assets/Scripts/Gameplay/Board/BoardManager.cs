@@ -8,6 +8,7 @@ using Random = Unity.Mathematics.Random;
 
 public class BoardManager : MonoBehaviour
 {
+    public static BoardManager instance;
     public GameObject borderCellPrefab;
     public float cellSize = 1f;
     public int boardSize = 8;
@@ -15,107 +16,80 @@ public class BoardManager : MonoBehaviour
     public List<GameObject> squares = new List<GameObject>();
     [SerializeField] private SpawnPlayer spawnPlayer;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         GenerateBorderBoard();
         spawnPlayer.Spawn(squares[0].transform.position);
-        foreach (var VARIABLE in squares)
-        {
-            Debug.LogError(VARIABLE.name);
-        }
+
     }
     public void GenerateBorderBoard()
     {
         Square square = gameObject.AddComponent<Square>();
         Shuffle(amountSquares);
 
-        /*
-        for (int x = 0; x < boardSize; x++)
-        {
-
-            for (int y = 0; y < boardSize; y++)
-            {
-
-                if (x == 0 || x == boardSize - 1 || y == 0 || y == boardSize - 1)
-                {
-                    Vector3 pos = new Vector3(x * cellSize -3.5f, y * cellSize - 3.5f, 0f);
-                    GameObject cell = Instantiate(borderCellPrefab, pos, Quaternion.identity, transform);
-                    SquareController controller = cell.gameObject.GetComponent<SquareController>();
-                    cell.name = $"Cell_{x}_{y}";
-
-                    if (x == 0 && y == 0)
-                    {
-
-                        square.squareType = SquareType.Start;
-                        square.position = pos;
-                        controller.Initialize(square);
-                        squares.Add(cell);
-
-                    }
-                    else if ((x == boardSize - 1 && y == 0) || (y == boardSize - 1 && x == 0) || (x == boardSize - 1 && y == boardSize - 1))
-                    {
-                        square.squareType = SquareType.ShopSquare;
-                        square.position = pos;
-                        controller.Initialize(square);
-                        squares.Add(cell);
-
-                    }
-                    else
-                    {
-
-                        if (y == boardSize - 1 || y == 0)
-                        {
-                            square.squareType = amountSquares[x-1];
-                            square.position = pos;
-                            controller.Initialize(square);
-                            squares.Add(cell);
-
-                        }
-                        if (x == boardSize - 1 || x == 0)
-                        {
-                            square.squareType = amountSquares[y-1];
-                            square.position = pos;
-                            controller.Initialize(square);
-                            squares.Add(cell);
-
-                        }
-                    }
-
-                }
-            }
-        }
-        */
-
         for (int x = 0; x < (boardSize-1)*4; x++)
         {
-            if (x < boardSize-1)
+            if (x <= boardSize-1)
             {
                 Vector3 pos = new Vector3(0 * cellSize -3.5f, x * cellSize - 3.5f, 0f);
+                square.position = pos;
+
                 if (x == 0)
                 {
                     square.squareType = SquareType.Start;
-                    square.position = pos;
                 }
                 else if (x == boardSize - 1)
                 {
                     square.squareType = SquareType.ShopSquare;
-                    square.position = pos;
                 }
                 else
                 {
-                    square.squareType = amountSquares[x];
-                    square.position = pos;
+                    square.squareType = amountSquares[x-1];
                 }
                 
             }
-            else if ((boardSize-1)< x && x < (boardSize*2-2))
+            else if ((boardSize-1)< x && x <= (boardSize-1)*2)
             {
                 Vector3 pos = new Vector3((x-boardSize+1)* cellSize -3.5f, (boardSize -1)  * cellSize - 3.5f, 0f);
+                square.position = pos;
+                if (x == (boardSize - 1) * 2)
+                {
+                    square.squareType = SquareType.ShopSquare;
+                }
+                else
+                {
+                    square.squareType = amountSquares[x-boardSize];
+                }
+            }
+            else if ((boardSize-1)*2 < x && x <= (boardSize-1)*3)
+            {
+                Vector3 pos = new Vector3((boardSize -1)* cellSize -3.5f, ((boardSize-1)*3-x)  * cellSize - 3.5f, 0f);
+                square.position = pos;
+                if (x == (boardSize - 1) * 3)
+                {
+                    square.squareType = SquareType.ShopSquare;
+                }
+                else
+                {
+                    square.squareType = amountSquares[x-boardSize*2+1];
+                }
+            }
+            else if ( (boardSize-1)*3 < x && x < (boardSize-1)*4)
+            {
+                Vector3 pos = new Vector3( ((boardSize-1)*4-x) * cellSize -3.5f, 0  * cellSize - 3.5f, 0f);
+                square.position = pos;
+                square.squareType = amountSquares[x-boardSize*3+2];
             }
             
             GameObject cell = Instantiate(borderCellPrefab, square.position, Quaternion.identity, transform);
             SquareController controller = cell.gameObject.GetComponent<SquareController>();
             controller.Initialize(square);
+            squares.Add(cell);
 
 
         }

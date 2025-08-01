@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public MoveEvent moveEvent;
+    public static PlayerMovement instance;
+
     private void Awake()
     {
-        moveEvent.AddListener(Move);
+        instance = this;
     }
 
     public void Move(int points)
     {
-        
+        Vector2 pos = BoardManager.instance.squares[points].transform.position;
+        transform.position = pos;
     }
     
 }

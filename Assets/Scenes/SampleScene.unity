@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 477473629}
   m_Layer: 7
   m_Name: BoardManager
-  m_TagString: Untagged
+  m_TagString: Board
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1003,22 +1003,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 229387707}
     m_Modifications:
-    - target: {fileID: 148409428810424914, guid: 0e07490ed04384251a7576bd5ee710d8, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 3138925230275846457, guid: e7d77189b669c43d38934a3cce5e05b5, type: 3}
-    - target: {fileID: 148409428810424914, guid: 0e07490ed04384251a7576bd5ee710d8, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5260986917094524570, guid: 0e07490ed04384251a7576bd5ee710d8, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5260986917094524570, guid: 0e07490ed04384251a7576bd5ee710d8, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5260986917094524570, guid: 0e07490ed04384251a7576bd5ee710d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
@@ -1092,22 +1076,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 229387707}
     m_Modifications:
-    - target: {fileID: 148409428810424914, guid: 0e07490ed04384251a7576bd5ee710d8, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 3138925230275846457, guid: e7d77189b669c43d38934a3cce5e05b5, type: 3}
-    - target: {fileID: 148409428810424914, guid: 0e07490ed04384251a7576bd5ee710d8, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5260986917094524570, guid: 0e07490ed04384251a7576bd5ee710d8, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5260986917094524570, guid: 0e07490ed04384251a7576bd5ee710d8, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5260986917094524570, guid: 0e07490ed04384251a7576bd5ee710d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5

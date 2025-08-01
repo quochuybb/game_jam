@@ -11,8 +11,6 @@ public class Dice : MonoBehaviour {
     private void Start () {
 
         rend = GetComponent<SpriteRenderer>();
-
-
     }
 	
     public void DiceRoll()
@@ -34,7 +32,6 @@ public class Dice : MonoBehaviour {
         }
 
         finalSide = randomDiceSide + 1;
-
-        Debug.Log(finalSide);
+        PlayerMovement.instance.Move(finalSide);
     }
 }
