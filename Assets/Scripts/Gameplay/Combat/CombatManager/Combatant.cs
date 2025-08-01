@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 public class Combatant : MonoBehaviour
 {
-    public CharacterStats statsData; 
-    public List<Skill> skills;       
+    public CharacterStats statsData;
+    public List<Skill> skills;
 
     [HideInInspector]
     public StatSet currentStats;
@@ -39,7 +39,7 @@ public class Combatant : MonoBehaviour
     public bool OnTurnStart()
     {
         Debug.Log($"{statsData.characterName} turn start. Energy: {currentStats.currentEnergy}, Health: {currentStats.currentHealth}");
-        
+
         if (currentStats.currentEnergy < currentStats.maxEnergy)
         {
             currentStats.currentEnergy++;
@@ -48,10 +48,15 @@ public class Combatant : MonoBehaviour
         if (stunDuration > 0)
         {
             Debug.Log($"{statsData.characterName} is stunned and misses their turn!");
-            stunDuration--; 
-            return true; 
+            stunDuration--;
+            return true;
         }
 
         return false;
+    }
+    
+    public bool IsStunned()
+    {
+        return stunDuration > 0;
     }
 }
