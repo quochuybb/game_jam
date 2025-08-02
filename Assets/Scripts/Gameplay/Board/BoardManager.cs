@@ -6,8 +6,8 @@ public class BoardManager : MonoBehaviour
     public CombatManager combatManager; 
 
     [Header("Test Assets")]
-    public Item testItemToAdd; // Assign an Item SO here to test adding it.
-    public CharacterStats defaultPlayerStats; // Assign your original Player_Stats SO here.
+    public Item testItemToAdd; 
+    public CharacterStats defaultPlayerStats;
 
     public int currentLoop = 1; 
 
@@ -29,11 +29,17 @@ public class BoardManager : MonoBehaviour
             Debug.Log("BoardManager: Player landed on a Hard square. Starting combat...");
             combatManager.StartCombat(MonsterDifficulty.Hard, currentLoop);
         }
+        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("BoardManager: Player landed on a Hard square. Starting combat...");
+            combatManager.StartCombat(MonsterDifficulty.MiniBoss, currentLoop);
+        }
 
         // --- NEW: Player Data Test Triggers ---
-        
-        // Press 'A' to Add an Item
-        if (Input.GetKeyDown(KeyCode.A))
+
+        // Press 'I' to Add an Item
+        if (Input.GetKeyDown(KeyCode.I))
         {
             Debug.Log("--- TEST: ADDING ITEM ---");
             combatManager.playerData.AddItem(testItemToAdd);
@@ -52,16 +58,22 @@ public class BoardManager : MonoBehaviour
             Debug.Log("--- TEST: UPGRADING DAMAGE ---");
             combatManager.playerData.UpgradeStat("damage", 1);
         }
+        // Press 'A' to upgrade Armor by +1
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("--- TEST: UPGRADING ARMOR ---");
+            combatManager.playerData.UpgradeStat("Armor", 1);
+        }
         
         // Press 'R' to Reset Inventory (Simulate Death)
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             Debug.Log("--- TEST: RESETTING INVENTORY (DEATH) ---");
             combatManager.playerData.OnPlayerDeath();
         }
 
         // Press 'F' for Full Reset (New Game)
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             Debug.Log("--- TEST: FULLY RESETTING PLAYER DATA ---");
             combatManager.playerData.ResetToDefaults(defaultPlayerStats);

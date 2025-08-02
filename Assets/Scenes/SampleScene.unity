@@ -357,6 +357,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 833b019ed7abeca4d8217f599f4bc688, type: 2}
   - {fileID: 11400000, guid: 6d352b1caf9c7d04eb038f9d888a1e17, type: 2}
   - {fileID: 11400000, guid: 00dbf6f12b260c9438d7faf713f1cc3f, type: 2}
+  - {fileID: 11400000, guid: ab60b0de938942643ab67f8a1207a896, type: 2}
   difficultySettings:
   - {fileID: 11400000, guid: 4cd8501fa79ccfe4e8a5148a5ed8de0b, type: 2}
   - {fileID: 11400000, guid: 3b817164bd327034b81f3c52f6a08dfd, type: 2}
@@ -411,7 +412,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatManager: {fileID: 422939413}
-  currentLoop: 1
+  testItemToAdd: {fileID: 11400000, guid: 129d68c2cd53913428613a8480335b4a, type: 2}
+  defaultPlayerStats: {fileID: 11400000, guid: b22157340e29f274f8953d7693c2de1e, type: 2}
+  currentLoop: 0
 --- !u!1 &483902730
 GameObject:
   m_ObjectHideFlags: 0

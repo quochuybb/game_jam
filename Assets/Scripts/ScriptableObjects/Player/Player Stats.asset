@@ -18,4 +18,8 @@ MonoBehaviour:
   baseDamage: 6
   baseEnergy: 6
   maxEnergy: 6
-  skills: []
+  skills:
+  - {fileID: 11400000, guid: 004a3d2eaaddb4f4e8ed15a74cce13a3, type: 2}
+  - {fileID: 11400000, guid: 578c7660cbfbbf8409f0b2dc7e2a97d3, type: 2}
+  - {fileID: 11400000, guid: c767932321082f7439ecfe4c08f0e201, type: 2}
+  - {fileID: 11400000, guid: d5f746b2bbe235749a918e6389ae5725, type: 2}

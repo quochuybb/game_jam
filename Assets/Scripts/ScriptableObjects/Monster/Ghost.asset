@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Ghost
   monsterSprite: {fileID: 8161347936068669891, guid: e7d77189b669c43d38934a3cce5e05b5, type: 3}
-  difficulty: 2
+  eligibleDifficulties: 000000000100000002000000
   baseHealth: 10
   baseArmor: 0
   baseDamage: 5
