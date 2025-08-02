@@ -62,7 +62,14 @@ public class BoardManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             Debug.Log("--- TEST: UPGRADING ARMOR ---");
-            combatManager.playerData.UpgradeStat("Armor", 1);
+            combatManager.playerData.UpgradeStat("armor", 1);
+        }
+
+        // Press 'S' to upgrade Energy by +1
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Debug.Log("--- TEST: UPGRADING Energy ---");
+            combatManager.playerData.UpgradeStat("energy", 1);
         }
         
         // Press 'R' to Reset Inventory (Simulate Death)

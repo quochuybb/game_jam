@@ -19,9 +19,6 @@ public class PlayerData : ScriptableObject
 
     // --- PUBLIC METHODS FOR SHOP/GAMEPLAY ---
 
-    /// <summary>
-    /// Permanently upgrades a base stat. This persists after death.
-    /// </summary>
     public void UpgradeStat(string statName, int amount)
     {
         switch (statName.ToLower())
@@ -44,9 +41,6 @@ public class PlayerData : ScriptableObject
         }
     }
 
-    /// <summary>
-    /// Adds an item to the player's inventory.
-    /// </summary>
     public void AddItem(Item newItem)
     {
         if (newItem != null)
@@ -56,20 +50,14 @@ public class PlayerData : ScriptableObject
         }
     }
     
-    // This is the "Reset Items" method you asked for.
-    /// <summary>
-    /// Called when the player dies. Clears inventory but keeps upgraded base stats and skills.
-    /// </summary>
+
     public void OnPlayerDeath()
     {
         inventory.Clear();
         Debug.Log("Player died. Inventory cleared. Base stats and skills remain.");
     }
 
-    // This is the "Reset Both" method you asked for.
-    /// <summary>
-    /// Resets all player data to the original default values. Used for starting a new game.
-    /// </summary>
+
     public void ResetToDefaults(CharacterStats startingStats)
     {
         if (startingStats == null)
@@ -84,7 +72,6 @@ public class PlayerData : ScriptableObject
         baseEnergy = startingStats.baseEnergy;
         maxEnergy = startingStats.maxEnergy;
 
-        // Make sure to create a new list so we don't accidentally modify the original SO
         equippedSkills = new List<Skill>(startingStats.skills);
         inventory.Clear();
         

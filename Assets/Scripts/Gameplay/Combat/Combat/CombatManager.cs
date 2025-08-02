@@ -210,10 +210,10 @@ public class CombatManager : MonoBehaviour
 
         if (currentDifficulty == MonsterDifficulty.MiniBoss)
         {
-            finalHealth += Mathf.RoundToInt(playerData.baseHealth * 0.8f) + Mathf.RoundToInt(playerData.baseDamage * 0.2f);
-            finalArmor += Mathf.RoundToInt(playerData.baseDamage * 0.3f);
+            finalHealth += Mathf.RoundToInt(playerData.baseHealth * 0.2f) + Mathf.RoundToInt(playerData.baseDamage * 0.2f);
+            finalArmor += Mathf.RoundToInt(playerData.baseDamage * 0.1f);
             finalDamage += Mathf.RoundToInt(playerData.baseArmor * 0.1f) + Mathf.RoundToInt(playerData.baseHealth * 0.1f);
-            finalEnergy += Mathf.RoundToInt(playerData.maxEnergy * 0.3f);
+            finalEnergy += Mathf.RoundToInt(playerData.maxEnergy * 0.2f);
         }
 
         stats.Initialize(finalHealth, finalArmor, finalDamage, finalEnergy, currentMonsterToFight.maxEnergy);
