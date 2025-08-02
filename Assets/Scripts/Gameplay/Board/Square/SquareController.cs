@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class SquareController : MonoBehaviour
 {
-    private Square square;
-    private SpriteRenderer spriteRenderer;
+    public Square square;
+    public SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
