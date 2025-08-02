@@ -411,6 +411,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b119e2b1c28f5c96b49a75529ded33d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatManager: {fileID: 422939413}
+  testItemToAdd: {fileID: 11400000, guid: 2548c7c5098e1db4d839ed43b2c50cfd, type: 2}
+  defaultPlayerStats: {fileID: 11400000, guid: b22157340e29f274f8953d7693c2de1e, type: 2}
+  testSkillToEquip: {fileID: 11400000, guid: 48772e01faa57bc48bd117aaf69a254b, type: 2}
+  currentLoop: 1
 --- !u!1 &483902730
 GameObject:
   m_ObjectHideFlags: 0
