@@ -6,26 +6,19 @@ public class CombatManager : MonoBehaviour
     [Header("Combatants")]
     public Combatant player;
     public Combatant monster;
-    
     [Header("Scene Setup")]
-    public Transform combatCameraPosition; 
+    public Transform combatCameraPosition;
     public CombatUI combatUI;
-
     private CombatState state;
+
 
     void Start()
     {
         if (combatCameraPosition != null) { Camera.main.transform.position = combatCameraPosition.position; Camera.main.transform.rotation = combatCameraPosition.rotation; }
         SetupBattle();
     }
-    
-    public void OnSkillPressed(int skillIndex) 
-    {
-        if (state == CombatState.PLAYERTURN) { PlayerAction(skillIndex); }
-    }
-
-    public void OnSkipTurnPressed()
-    {
+    public void OnSkillPressed(int skillIndex) { if (state == CombatState.PLAYERTURN) { PlayerAction(skillIndex); } }
+    public void OnSkipTurnPressed() {
         if (state != CombatState.PLAYERTURN) return;
         Debug.Log("Player skips turn, gaining extra energy.");
         player.currentStats.currentEnergy += 1;
@@ -33,9 +26,7 @@ public class CombatManager : MonoBehaviour
         combatUI.UpdateAllUI(player, monster);
         EndPlayerTurn();
     }
-
-    void SetupBattle()
-    {
+    void SetupBattle() {
         state = CombatState.START;
         Debug.Log("--- BATTLE START ---");
         combatUI.SetupSkillButtons(player.skills);
@@ -45,11 +36,12 @@ public class CombatManager : MonoBehaviour
 
     IEnumerator PlayerTurn()
     {
-        bool wasStunned = player.OnTurnStart();
-        combatUI.UpdateAllUI(player, monster); 
+        player.OnTurnStart();
+        combatUI.UpdateAllUI(player, monster);
         
-        if (wasStunned)
+        if (player.IsStunned())
         {
+            Debug.Log("Player is stunned and misses their turn!");
             yield return new WaitForSeconds(1f);
             EndPlayerTurn();
             yield break;
@@ -60,19 +52,14 @@ public class CombatManager : MonoBehaviour
         combatUI.SetActionButtonsInteractable(true, player);
     }
 
-    void PlayerAction(int skillIndex)
-    {
+    void PlayerAction(int skillIndex) {
         if (skillIndex >= player.skills.Count) return;
-
         Skill skill = player.skills[skillIndex];
         if (player.currentStats.currentEnergy < skill.energyCost) { Debug.Log($"Not enough energy! Need {skill.energyCost}, have {player.currentStats.currentEnergy}"); return; }
-
         player.currentStats.currentEnergy -= skill.energyCost;
         combatUI.UpdateAllUI(player, monster);
-        
         Debug.Log($"Player used {skill.skillName}!");
         ExecuteSkill(skill, player, monster);
-
         if (monster.currentStats.currentHealth <= 0) { state = CombatState.WON; EndBattle(); }
         else { EndPlayerTurn(); }
     }
@@ -81,53 +68,68 @@ public class CombatManager : MonoBehaviour
     {
         state = CombatState.MONSTERTURN;
         combatUI.SetActionButtonsInteractable(false, player);
+        player.TickDownStatusEffects(); 
+        combatUI.UpdateAllUI(player, monster);
         StartCoroutine(MonsterTurn());
     }
 
     IEnumerator MonsterTurn()
     {
         Debug.Log("--- MONSTER'S TURN ---");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
+        monster.OnTurnStart();
+        combatUI.UpdateAllUI(player, monster);
 
-        bool wasStunned = monster.OnTurnStart();
-        combatUI.UpdateAllUI(player, monster); // <<< CHANGE
-
-        if (wasStunned) { StartCoroutine(PlayerTurn()); yield break; }
-
-        Skill chosenSkill = null;
-        for (int i = 0; i < 10; i++) 
+        if (monster.IsStunned())
         {
-            int randomIndex = Random.Range(0, monster.skills.Count);
-            if (monster.currentStats.currentEnergy >= monster.skills[randomIndex].energyCost) { chosenSkill = monster.skills[randomIndex]; break; }
+            Debug.Log("Monster is stunned and misses its turn!");
+            monster.TickDownStatusEffects(); 
+            combatUI.UpdateAllUI(player, monster);
+            StartCoroutine(PlayerTurn());
+            yield break;
         }
 
-        if (chosenSkill != null)
+        int numberOfSkills = monster.skills.Count;
+        int chosenActionIndex = Random.Range(0, numberOfSkills + 1);
+        if (chosenActionIndex < numberOfSkills)
         {
-            monster.currentStats.currentEnergy -= chosenSkill.energyCost;
-            Debug.Log($"Monster used {chosenSkill.name}!");
-            ExecuteSkill(chosenSkill, monster, player);
+            Skill chosenSkill = monster.skills[chosenActionIndex];
+            if (monster.currentStats.currentEnergy >= chosenSkill.energyCost)
+            {
+                monster.currentStats.currentEnergy -= chosenSkill.energyCost;
+                Debug.Log($"Monster used {chosenSkill.name}!");
+                ExecuteSkill(chosenSkill, monster, player);
+            }
+            else
+            {
+                Debug.Log($"Monster wanted to use {chosenSkill.name}, but couldn't afford it. Skipping turn.");
+                monster.currentStats.currentEnergy += 1;
+                monster.currentStats.currentEnergy = Mathf.Min(monster.currentStats.maxEnergy, monster.currentStats.currentEnergy);
+                combatUI.UpdateAllUI(player, monster);
+            }
         }
-        else { Debug.Log("Monster couldn't find a skill to use."); }
-
+        else
+        {
+            Debug.Log("Monster chose to skip its turn to save energy.");
+            monster.currentStats.currentEnergy += 1;
+            monster.currentStats.currentEnergy = Mathf.Min(monster.currentStats.maxEnergy, monster.currentStats.currentEnergy);
+            combatUI.UpdateAllUI(player, monster);
+        }
+        
+        monster.TickDownStatusEffects(); 
+        combatUI.UpdateAllUI(player, monster); 
         if (player.currentStats.currentHealth <= 0) { state = CombatState.LOST; EndBattle(); }
         else { StartCoroutine(PlayerTurn()); }
     }
 
-    void ExecuteSkill(Skill skill, Combatant user, Combatant target)
-    {
+    void ExecuteSkill(Skill skill, Combatant user, Combatant target) {
         if (skill.damageMultiplier > 0) { int damage = Mathf.RoundToInt(user.currentStats.currentDamage * skill.damageMultiplier); target.TakeDamage(damage); }
         if (skill.healthToRestore > 0) { user.Heal(skill.healthToRestore); }
         if (skill.stunTurns > 0) { target.ApplyStun(skill.stunTurns); }
-        
         if (skill.poisonTurns > 0) { target.ApplyPoison(skill.poisonDamage, skill.poisonTurns); }
-
         combatUI.UpdateAllUI(player, monster);
     }
-
-
-
-    void EndBattle()
-    {
+    void EndBattle() {
         combatUI.SetActionButtonsInteractable(false, player);
         if (state == CombatState.WON) { Debug.Log("--- YOU WON THE BATTLE! ---"); }
         else if (state == CombatState.LOST) { Debug.Log("--- YOU WERE DEFEATED ---"); }

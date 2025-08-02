@@ -9,8 +9,8 @@ public class Combatant : MonoBehaviour
     [HideInInspector]
     public StatSet currentStats;
     private int stunDuration = 0;
-    private int poisonDuration = 0;     // <<< NEW
-    private int poisonDamagePerTurn = 0;// <<< NEW
+    private int poisonDuration = 0;
+    private int poisonDamagePerTurn = 0;
 
     void Awake()
     {
@@ -38,7 +38,6 @@ public class Combatant : MonoBehaviour
         Debug.Log($"{statsData.characterName} is stunned for {turns} turn(s)!");
     }
 
-    // <<< NEW: A method to apply poison status
     public void ApplyPoison(int damage, int turns)
     {
         poisonDamagePerTurn = damage;
@@ -46,7 +45,7 @@ public class Combatant : MonoBehaviour
         Debug.Log($"{statsData.characterName} is poisoned, taking {damage} damage for {turns} turns!");
     }
 
-    public bool OnTurnStart()
+    public void OnTurnStart()
     {
         Debug.Log($"{statsData.characterName} turn start. Energy: {currentStats.currentEnergy}, Health: {currentStats.currentHealth}");
         
@@ -55,23 +54,23 @@ public class Combatant : MonoBehaviour
             currentStats.currentEnergy++;
         }
         
-        // <<< NEW: Apply poison damage at the start of the turn
         if (poisonDuration > 0)
         {
-            // Apply true damage, straight to health
             currentStats.currentHealth -= poisonDamagePerTurn;
             Debug.Log($"{statsData.characterName} takes {poisonDamagePerTurn} damage from poison! Health is now {currentStats.currentHealth}.");
-            poisonDuration--;
         }
-
+    }
+    
+    public void TickDownStatusEffects()
+    {
         if (stunDuration > 0)
         {
-            Debug.Log($"{statsData.characterName} is stunned and misses their turn!");
             stunDuration--;
-            return true;
         }
-        
-        return false;
+        if (poisonDuration > 0)
+        {
+            poisonDuration--;
+        }
     }
 
     public bool IsStunned()
@@ -79,7 +78,6 @@ public class Combatant : MonoBehaviour
         return stunDuration > 0;
     }
 
-    // <<< NEW: A method to check if poisoned
     public bool IsPoisoned()
     {
         return poisonDuration > 0;
