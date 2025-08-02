@@ -18,8 +18,8 @@ MonoBehaviour:
   baseHealth: 10
   baseArmor: 0
   baseDamage: 5
-  baseEnergy: 6
-  maxEnergy: 8
+  baseEnergy: 5
+  maxEnergy: 12
   skills:
   - {fileID: 11400000, guid: 465989070963c3d4b85995ad5dfd7897, type: 2}
   - {fileID: 11400000, guid: f5f77f231b820df41b37e884449f5407, type: 2}

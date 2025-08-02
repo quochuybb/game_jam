@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef690a2470690ab43936ba32a4d46bd2, type: 3}
-  m_Name: The call from heaven
+  m_Script: {fileID: 11500000, guid: d5b2408b35e34c94fb6a84246af171ec, type: 3}
+  m_Name: NormalDifficultyScaling
   m_EditorClassIdentifier: 
-  skillName: The call from heaven
-  description: 
-  energyCost: 2
-  damageMultiplier: 0
-  healthToRestore: 10
-  stunTurns: 0
-  poisonDamage: 0
-  poisonTurns: 0
+  difficulty: 1
+  flatHealthBonus: 2
+  flatArmorBonus: 2
+  flatDamageBonus: 2
+  flatEnergyBonus: 1
+  healthPerLoop: 7
+  armorPerLoop: 2
+  damagePerLoop: 2
+  energyPerLoop: 1

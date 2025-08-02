@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5b2408b35e34c94fb6a84246af171ec, type: 3}
-  m_Name: NormalDifficultyScaling
+  m_Name: HardDifficultyScaling
   m_EditorClassIdentifier: 
-  difficulty: 1
-  flatHealthBonus: 2
+  difficulty: 2
+  flatHealthBonus: 5
   flatArmorBonus: 2
-  flatDamageBonus: 2
-  flatEnergyBonus: 1
-  healthPerLoop: 5
-  armorPerLoop: 2
-  damagePerLoop: 2
+  flatDamageBonus: 3
+  flatEnergyBonus: 2
+  healthPerLoop: 8
+  armorPerLoop: 3
+  damagePerLoop: 3
   energyPerLoop: 2

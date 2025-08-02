@@ -17,9 +17,9 @@ MonoBehaviour:
   eligibleDifficulties: 000000000100000002000000
   baseHealth: 7
   baseArmor: 2
-  baseDamage: 4
-  baseEnergy: 6
-  maxEnergy: 8
+  baseDamage: 3
+  baseEnergy: 5
+  maxEnergy: 12
   skills:
   - {fileID: 11400000, guid: fd3193163b6ae2f4da035d5590cdcf9c, type: 2}
   - {fileID: 11400000, guid: f0ba1000510f0b144bf6bea0b06228f3, type: 2}

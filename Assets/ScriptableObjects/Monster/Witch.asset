@@ -15,10 +15,10 @@ MonoBehaviour:
   characterName: Witch
   monsterSprite: {fileID: -6239708876551581209, guid: e7d77189b669c43d38934a3cce5e05b5, type: 3}
   eligibleDifficulties: 03000000
-  baseHealth: 5
-  baseArmor: 2
+  baseHealth: 4
+  baseArmor: 0
   baseDamage: 5
-  baseEnergy: 7
+  baseEnergy: 6
   maxEnergy: 12
   skills:
   - {fileID: 11400000, guid: f5464f104c4c99143bee049ac5c9f33e, type: 2}
