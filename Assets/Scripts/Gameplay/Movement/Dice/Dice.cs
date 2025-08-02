@@ -12,13 +12,8 @@ public class Dice : MonoBehaviour {
 
         rend = GetComponent<SpriteRenderer>();
     }
-	
-    public void DiceRoll()
-    {
-        StartCoroutine("RollTheDice");
-    }
 
-    private IEnumerator RollTheDice()
+    public IEnumerator RollTheDice(System.Action<int> onRollFinished)
     {
         int randomDiceSide = 0;
         int finalSide = 0;
@@ -28,10 +23,10 @@ public class Dice : MonoBehaviour {
 
             rend.sprite = diceSides[randomDiceSide];
 
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.1f);
         }
 
         finalSide = randomDiceSide + 1;
-        PlayerMovement.instance.Move(finalSide);
+        onRollFinished?.Invoke(finalSide); 
     }
 }
