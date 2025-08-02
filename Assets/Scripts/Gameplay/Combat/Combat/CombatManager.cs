@@ -18,8 +18,11 @@ public class CombatManager : MonoBehaviour
     public Combatant monster;
     public CombatUI combatUI;
 
+    // These store the parameters for the current battle
     private MonsterData currentMonsterToFight;
+    private MonsterDifficulty currentDifficulty;
     private int currentLoopCount = 0;
+    
     private CombatState state;
     private Dictionary<MonsterDifficulty, DifficultyScaling> difficultyMap;
 
@@ -62,10 +65,11 @@ public class CombatManager : MonoBehaviour
     {
         Debug.Log($"Request received to start combat at difficulty '{difficulty}' on loop {loopCount}.");
         
+        // <<< CHANGED: Filter monsters based on the new eligibility list
         List<MonsterData> availableMonsters = new List<MonsterData>();
         foreach(var m in allMonsters)
         {
-            if (m.difficulty == difficulty)
+            if (m.eligibleDifficulties.Contains(difficulty))
             {
                 availableMonsters.Add(m);
             }
@@ -77,7 +81,9 @@ public class CombatManager : MonoBehaviour
             return;
         }
 
+        // Store the chosen parameters for this specific fight
         currentMonsterToFight = availableMonsters[UnityEngine.Random.Range(0, availableMonsters.Count)];
+        currentDifficulty = difficulty; // Store the chosen difficulty
         currentLoopCount = loopCount;
 
         if (combatRootObject != null)
@@ -97,7 +103,7 @@ public class CombatManager : MonoBehaviour
         monster.Setup(monsterStats, currentMonsterToFight.skills, currentMonsterToFight.characterName, currentMonsterToFight.monsterSprite);
         
         state = CombatState.START;
-        Debug.Log($"--- BATTLE START (Loop {currentLoopCount}) vs {currentMonsterToFight.characterName} ---");
+        Debug.Log($"--- BATTLE START (Loop {currentLoopCount}) vs {currentMonsterToFight.characterName} (Difficulty: {currentDifficulty}) ---");
         combatUI.SetupSkillButtons(player.skills);
         combatUI.UpdateAllUI(player, monster);
         StartCoroutine(PlayerTurn());
@@ -186,23 +192,30 @@ public class CombatManager : MonoBehaviour
         stats.Initialize(finalHealth, finalArmor, finalDamage, playerData.baseEnergy, playerData.maxEnergy);
         return stats;
     }
-    StatSet CalculateMonsterStats() {
+    StatSet CalculateMonsterStats()
+    {
         StatSet stats = new StatSet();
-        DifficultyScaling scaling = difficultyMap[currentMonsterToFight.difficulty];
+        // Use the difficulty that was passed into StartCombat()
+        DifficultyScaling scaling = difficultyMap[currentDifficulty];
+
         int finalHealth = currentMonsterToFight.baseHealth + scaling.flatHealthBonus;
         int finalArmor = currentMonsterToFight.baseArmor + scaling.flatArmorBonus;
         int finalDamage = currentMonsterToFight.baseDamage + scaling.flatDamageBonus;
         int finalEnergy = currentMonsterToFight.baseEnergy + scaling.flatEnergyBonus;
+
         finalHealth += scaling.healthPerLoop * currentLoopCount;
         finalArmor += scaling.armorPerLoop * currentLoopCount;
         finalDamage += scaling.damagePerLoop * currentLoopCount;
         finalEnergy += scaling.energyPerLoop * (currentLoopCount / 3);
-        if (currentMonsterToFight.difficulty == MonsterDifficulty.MiniBoss) {
+
+        if (currentDifficulty == MonsterDifficulty.MiniBoss)
+        {
             finalHealth += Mathf.RoundToInt(playerData.baseHealth * 0.8f) + Mathf.RoundToInt(playerData.baseDamage * 0.2f);
             finalArmor += Mathf.RoundToInt(playerData.baseDamage * 0.3f);
             finalDamage += Mathf.RoundToInt(playerData.baseArmor * 0.1f) + Mathf.RoundToInt(playerData.baseHealth * 0.1f);
             finalEnergy += Mathf.RoundToInt(playerData.maxEnergy * 0.3f);
         }
+
         stats.Initialize(finalHealth, finalArmor, finalDamage, finalEnergy, currentMonsterToFight.maxEnergy);
         return stats;
     }

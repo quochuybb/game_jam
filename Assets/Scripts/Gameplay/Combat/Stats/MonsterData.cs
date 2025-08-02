@@ -6,8 +6,10 @@ public class MonsterData : ScriptableObject
 {
     [Header("Basic Info")]
     public string characterName;
-    public Sprite monsterSprite; 
-    public MonsterDifficulty difficulty;
+    public Sprite monsterSprite;
+    
+    [Header("Difficulty Eligibility")]
+    public List<MonsterDifficulty> eligibleDifficulties;
 
     [Header("Base Stats (Unique to this monster)")]
     public int baseHealth = 7;
