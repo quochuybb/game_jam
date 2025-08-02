@@ -408,14 +408,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 477473627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c9738c5b3ebc06c4a3b875922958eda, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b119e2b1c28f5c96b49a75529ded33d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   combatManager: {fileID: 422939413}
   testItemToAdd: {fileID: 11400000, guid: 2548c7c5098e1db4d839ed43b2c50cfd, type: 2}
   defaultPlayerStats: {fileID: 11400000, guid: b22157340e29f274f8953d7693c2de1e, type: 2}
-  testSkillToEquip: {fileID: 11400000, guid: 374bfebd1d5e0f04bbaedad36bbf56cb, type: 2}
-  currentLoop: 0
+  testSkillToEquip: {fileID: 11400000, guid: 48772e01faa57bc48bd117aaf69a254b, type: 2}
+  currentLoop: 1
 --- !u!1 &483902730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2843,6 +2843,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 787821336}
     m_Modifications:
+    - target: {fileID: -3555083832648206032, guid: 550ebf49baf13a849a4a0907751a38e4, type: 3}
+      propertyPath: m_Size.x
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: -3555083832648206032, guid: 550ebf49baf13a849a4a0907751a38e4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: -3555083832648206032, guid: 550ebf49baf13a849a4a0907751a38e4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -407969829491681172, guid: 97ba893235bb5b663a32f7b7be751304, type: 3}
+    - target: {fileID: -3555083832648206032, guid: 550ebf49baf13a849a4a0907751a38e4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8460321147701366923, guid: 550ebf49baf13a849a4a0907751a38e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.9026337
