@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class Combatant : MonoBehaviour
 {
+    [Header("Component References")]
+    public SpriteRenderer spriteRenderer;
     [HideInInspector]
     public StatSet currentStats;
     [HideInInspector]
@@ -14,14 +16,22 @@ public class Combatant : MonoBehaviour
     private int poisonDuration = 0;
     private int poisonDamagePerTurn = 0;
 
-    public void Setup(StatSet initialStats, List<Skill> initialSkills, string name)
+    public void Setup(StatSet initialStats, List<Skill> initialSkills, string name, Sprite sprite = null)
     {
         currentStats = initialStats;
         skills = initialSkills;
         characterName = name;
+
+        // Reset status effects
         stunDuration = 0;
         poisonDuration = 0;
         poisonDamagePerTurn = 0;
+
+        // <<< NEW: Swap the sprite if one is provided
+        if (spriteRenderer != null && sprite != null)
+        {
+            spriteRenderer.sprite = sprite;
+        }
     }
 
     public bool TakeDamage(int damage)

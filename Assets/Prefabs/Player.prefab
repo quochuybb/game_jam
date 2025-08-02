@@ -97,12 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94a89ed06610e3a46a5c60744a8cfa68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsData: {fileID: 11400000, guid: e0d34a004476fbb48b0321b08c06b6c6, type: 2}
-  skills:
-  - {fileID: 11400000, guid: 004a3d2eaaddb4f4e8ed15a74cce13a3, type: 2}
-  - {fileID: 11400000, guid: 578c7660cbfbbf8409f0b2dc7e2a97d3, type: 2}
-  - {fileID: 11400000, guid: c767932321082f7439ecfe4c08f0e201, type: 2}
-  - {fileID: 11400000, guid: d5f746b2bbe235749a918e6389ae5725, type: 2}
+  spriteRenderer: {fileID: 6266303607546066879}
   currentStats:
     maxHealth: 0
     currentHealth: 0
@@ -110,3 +105,9 @@ MonoBehaviour:
     currentDamage: 0
     currentEnergy: 0
     maxEnergy: 0
+  skills:
+  - {fileID: 11400000, guid: 004a3d2eaaddb4f4e8ed15a74cce13a3, type: 2}
+  - {fileID: 11400000, guid: 578c7660cbfbbf8409f0b2dc7e2a97d3, type: 2}
+  - {fileID: 11400000, guid: c767932321082f7439ecfe4c08f0e201, type: 2}
+  - {fileID: 11400000, guid: d5f746b2bbe235749a918e6389ae5725, type: 2}
+  characterName: 

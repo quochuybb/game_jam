@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Spider
   m_EditorClassIdentifier: 
   characterName: Spider
+  monsterSprite: {fileID: 36300886547659823, guid: e7d77189b669c43d38934a3cce5e05b5, type: 3}
   difficulty: 1
   baseHealth: 7
   baseArmor: 2

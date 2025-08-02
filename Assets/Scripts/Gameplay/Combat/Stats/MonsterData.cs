@@ -6,6 +6,7 @@ public class MonsterData : ScriptableObject
 {
     [Header("Basic Info")]
     public string characterName;
+    public Sprite monsterSprite; 
     public MonsterDifficulty difficulty;
 
     [Header("Base Stats (Unique to this monster)")]
