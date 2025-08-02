@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: Bat
   m_EditorClassIdentifier: 
   characterName: Bat
-  baseHealth: 7
-  baseArmor: 2
-  baseDamage: 6
+  difficulty: 0
+  baseHealth: 6
+  baseArmor: 1
+  baseDamage: 4
   baseEnergy: 6
-  maxEnergy: 12
+  maxEnergy: 8
+  skills:
+  - {fileID: 11400000, guid: 133184a9dce261149b170f03740afdb0, type: 2}
+  - {fileID: 11400000, guid: 2d4032bb94e3a4c49afa9cb3f4358f44, type: 2}
+  - {fileID: 11400000, guid: 7ffa0b173d066374f950b26ba1911423, type: 2}
+  - {fileID: 11400000, guid: f0348fff5e6a12c41a5bef328ec0dc8e, type: 2}

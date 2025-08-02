@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef690a2470690ab43936ba32a4d46bd2, type: 3}
   m_Name: Spider Silk
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: Spider Silk
   description: 
-  energyCost: 1
-  damageMultiplier: 1
+  energyCost: 5
+  damageMultiplier: 0
   healthToRestore: 0
-  stunTurns: 0
+  stunTurns: 2
   poisonDamage: 0
   poisonTurns: 0

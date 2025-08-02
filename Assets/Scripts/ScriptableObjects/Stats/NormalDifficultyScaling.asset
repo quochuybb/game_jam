@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef690a2470690ab43936ba32a4d46bd2, type: 3}
-  m_Name: Web Area
+  m_Script: {fileID: 11500000, guid: d5b2408b35e34c94fb6a84246af171ec, type: 3}
+  m_Name: NormalDifficultyScaling
   m_EditorClassIdentifier: 
-  skillName: Web area
-  description: 
-  energyCost: 2
-  damageMultiplier: 0
-  healthToRestore: 0
-  stunTurns: 0
-  poisonDamage: 2
-  poisonTurns: 3
+  difficulty: 1
+  flatHealthBonus: 2
+  flatArmorBonus: 2
+  flatDamageBonus: 2
+  flatEnergyBonus: 1
+  healthPerLoop: 5
+  armorPerLoop: 2
+  damagePerLoop: 2
+  energyPerLoop: 2

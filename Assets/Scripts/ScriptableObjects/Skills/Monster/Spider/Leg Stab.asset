@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef690a2470690ab43936ba32a4d46bd2, type: 3}
   m_Name: Leg Stab
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: Leg Stab
   description: 
-  energyCost: 1
-  damageMultiplier: 1
+  energyCost: 2
+  damageMultiplier: 1.25
   healthToRestore: 0
   stunTurns: 0
   poisonDamage: 0

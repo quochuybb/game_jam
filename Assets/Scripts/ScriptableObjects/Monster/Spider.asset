@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13aa05d816526094f94ea918ead2806f, type: 3}
+  m_Name: Spider
+  m_EditorClassIdentifier: 
+  characterName: Spider
+  difficulty: 1
+  baseHealth: 7
+  baseArmor: 2
+  baseDamage: 4
+  baseEnergy: 6
+  maxEnergy: 8
+  skills:
+  - {fileID: 11400000, guid: fd3193163b6ae2f4da035d5590cdcf9c, type: 2}
+  - {fileID: 11400000, guid: f0ba1000510f0b144bf6bea0b06228f3, type: 2}
+  - {fileID: 11400000, guid: d9b9b7cb8de4b8d42aa66952680746c7, type: 2}
+  - {fileID: 11400000, guid: 22c34c383fe28bd42881902a3543f904, type: 2}
