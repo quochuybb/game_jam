@@ -414,7 +414,8 @@ MonoBehaviour:
   combatManager: {fileID: 422939413}
   testItemToAdd: {fileID: 11400000, guid: 2548c7c5098e1db4d839ed43b2c50cfd, type: 2}
   defaultPlayerStats: {fileID: 11400000, guid: b22157340e29f274f8953d7693c2de1e, type: 2}
-  currentLoop: 1
+  testSkillToEquip: {fileID: 11400000, guid: 374bfebd1d5e0f04bbaedad36bbf56cb, type: 2}
+  currentLoop: 0
 --- !u!1 &483902730
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,82 +8,47 @@ public class BoardManager : MonoBehaviour
     [Header("Test Assets")]
     public Item testItemToAdd; 
     public CharacterStats defaultPlayerStats;
+    public Skill testSkillToEquip;
 
     public int currentLoop = 1; 
 
     void Update()
     {
-        // --- Combat Triggers ---
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Debug.Log("BoardManager: Player landed on an Easy square. Starting combat...");
-            combatManager.StartCombat(MonsterDifficulty.Easy, currentLoop);
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            Debug.Log("BoardManager: Player landed on a Normal square. Starting combat...");
-            combatManager.StartCombat(MonsterDifficulty.Normal, currentLoop);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("BoardManager: Player landed on a Hard square. Starting combat...");
-            combatManager.StartCombat(MonsterDifficulty.Hard, currentLoop);
-        }
+        if (Input.GetKeyDown(KeyCode.Q)) { combatManager.StartCombat(MonsterDifficulty.Easy, currentLoop); }
+        if (Input.GetKeyDown(KeyCode.W)) { combatManager.StartCombat(MonsterDifficulty.Normal, currentLoop); }
+        if (Input.GetKeyDown(KeyCode.E)) { combatManager.StartCombat(MonsterDifficulty.Hard, currentLoop); }
+        if (Input.GetKeyDown(KeyCode.R)) { combatManager.StartCombat(MonsterDifficulty.MiniBoss, currentLoop); }
+
+
+        if (Input.GetKeyDown(KeyCode.I)) { combatManager.playerData.AddItem(testItemToAdd); }
         
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Debug.Log("BoardManager: Player landed on a Hard square. Starting combat...");
-            combatManager.StartCombat(MonsterDifficulty.MiniBoss, currentLoop);
-        }
-
-        // --- NEW: Player Data Test Triggers ---
-
-        // Press 'I' to Add an Item
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            Debug.Log("--- TEST: ADDING ITEM ---");
-            combatManager.playerData.AddItem(testItemToAdd);
-        }
+        if (Input.GetKeyDown(KeyCode.H)) { combatManager.playerData.UpgradeStat("health", 1); }
+        if (Input.GetKeyDown(KeyCode.D)) { combatManager.playerData.UpgradeStat("damage", 1); }
+        if (Input.GetKeyDown(KeyCode.A)) { combatManager.playerData.UpgradeStat("armor", 1); }
+        if (Input.GetKeyDown(KeyCode.S)) { combatManager.playerData.UpgradeStat("energy", 1); }
         
-        // Press 'H' to upgrade Health by +1
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            Debug.Log("--- TEST: UPGRADING HEALTH ---");
-            combatManager.playerData.UpgradeStat("health", 1);
-        }
+        if (Input.GetKeyDown(KeyCode.O)) { combatManager.playerData.OnPlayerDeath(); }
+        if (Input.GetKeyDown(KeyCode.P)) { combatManager.playerData.ResetToDefaults(defaultPlayerStats); }
 
-        // Press 'D' to upgrade Damage by +1
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Debug.Log("--- TEST: UPGRADING DAMAGE ---");
-            combatManager.playerData.UpgradeStat("damage", 1);
+            Debug.Log("--- TEST: SWAPPING SKILL IN SLOT 1 ---");
+            combatManager.playerData.EquipNewSkill(testSkillToEquip, 0);
         }
-        // Press 'A' to upgrade Armor by +1
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Debug.Log("--- TEST: UPGRADING ARMOR ---");
-            combatManager.playerData.UpgradeStat("armor", 1);
+            Debug.Log("--- TEST: SWAPPING SKILL IN SLOT 2 ---");
+            combatManager.playerData.EquipNewSkill(testSkillToEquip, 1);
         }
-
-        // Press 'S' to upgrade Energy by +1
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Debug.Log("--- TEST: UPGRADING Energy ---");
-            combatManager.playerData.UpgradeStat("energy", 1);
+            Debug.Log("--- TEST: SWAPPING SKILL IN SLOT 3 ---");
+            combatManager.playerData.EquipNewSkill(testSkillToEquip, 2);
         }
-        
-        // Press 'R' to Reset Inventory (Simulate Death)
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            Debug.Log("--- TEST: RESETTING INVENTORY (DEATH) ---");
-            combatManager.playerData.OnPlayerDeath();
-        }
-
-        // Press 'F' for Full Reset (New Game)
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log("--- TEST: FULLY RESETTING PLAYER DATA ---");
-            combatManager.playerData.ResetToDefaults(defaultPlayerStats);
+            Debug.Log("--- TEST: SWAPPING SKILL IN SLOT 4 ---");
+            combatManager.playerData.EquipNewSkill(testSkillToEquip, 3);
         }
     }
 }
