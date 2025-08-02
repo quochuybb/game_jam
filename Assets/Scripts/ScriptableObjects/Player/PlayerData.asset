@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a3eb9e6ef2ae8e428ab82ae6d12493d, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  baseHealth: 10
+  baseHealth: 5
   baseArmor: 5
-  baseDamage: 9
+  baseDamage: 6
   baseEnergy: 6
   maxEnergy: 6
   equippedSkills:
@@ -22,6 +22,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 578c7660cbfbbf8409f0b2dc7e2a97d3, type: 2}
   - {fileID: 11400000, guid: c767932321082f7439ecfe4c08f0e201, type: 2}
   - {fileID: 11400000, guid: d5f746b2bbe235749a918e6389ae5725, type: 2}
-  inventory:
-  - {fileID: 11400000, guid: 129d68c2cd53913428613a8480335b4a, type: 2}
-  - {fileID: 11400000, guid: 129d68c2cd53913428613a8480335b4a, type: 2}
+  inventory: []

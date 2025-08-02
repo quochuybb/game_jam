@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 
 public class CombatUI : MonoBehaviour
 {
@@ -9,9 +10,9 @@ public class CombatUI : MonoBehaviour
     public CombatManager combatManager;
 
     [Header("UI Elements")]
-    public TextMeshProUGUI playerHPText;
+    public Slider playerHPText;
     public TextMeshProUGUI playerEnergyText;
-    public TextMeshProUGUI monsterHPText;
+    public Slider monsterHPText;
     public Image playerStunIcon;
     public Image monsterStunIcon;
     public Image playerPoisonIcon;
@@ -62,9 +63,13 @@ public class CombatUI : MonoBehaviour
 
     public void UpdateAllUI(Combatant player, Combatant monster)
     {
-        playerHPText.text = $"HP: {player.currentStats.currentHealth} / {player.currentStats.maxHealth}";
+        playerHPText.maxValue = player.currentStats.maxHealth;
+        playerHPText.value = player.currentStats.currentHealth;
+        
         playerEnergyText.text = $"Energy: {player.currentStats.currentEnergy} / {player.currentStats.maxEnergy}";
-        monsterHPText.text = $"HP: {monster.currentStats.currentHealth} / {monster.currentStats.maxHealth}";
+        
+        monsterHPText.maxValue = monster.currentStats.maxHealth;
+        monsterHPText.value = monster.currentStats.currentHealth;
 
         playerStunIcon.gameObject.SetActive(player.IsStunned());
         monsterStunIcon.gameObject.SetActive(monster.IsStunned());
