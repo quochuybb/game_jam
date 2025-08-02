@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a3eb9e6ef2ae8e428ab82ae6d12493d, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  baseHealth: 10
+  baseArmor: 5
+  baseDamage: 9
+  baseEnergy: 6
+  maxEnergy: 6
+  equippedSkills:
+  - {fileID: 11400000, guid: 004a3d2eaaddb4f4e8ed15a74cce13a3, type: 2}
+  - {fileID: 11400000, guid: 578c7660cbfbbf8409f0b2dc7e2a97d3, type: 2}
+  - {fileID: 11400000, guid: c767932321082f7439ecfe4c08f0e201, type: 2}
+  - {fileID: 11400000, guid: d5f746b2bbe235749a918e6389ae5725, type: 2}
+  inventory:
+  - {fileID: 11400000, guid: 129d68c2cd53913428613a8480335b4a, type: 2}
+  - {fileID: 11400000, guid: 129d68c2cd53913428613a8480335b4a, type: 2}
