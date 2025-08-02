@@ -1,89 +1,120 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Unity.Mathematics;
+using Random = Unity.Mathematics.Random;
+
 
 public class BoardManager : MonoBehaviour
 {
-    [Header("Game Systems")]
-    public CombatManager combatManager; 
+    public static BoardManager instance;
+    public GameObject borderCellPrefab;
+    public float cellSize = 1f;
+    public int boardSize = 8;
+    public List<SquareType> amountSquares = new List<SquareType>();
+    public List<GameObject> squares = new List<GameObject>();
+    [SerializeField] private SpawnPlayer spawnPlayer;
 
-    [Header("Test Assets")]
-    public Item testItemToAdd; 
-    public CharacterStats defaultPlayerStats;
-
-    public int currentLoop = 1; 
-
-    void Update()
+    private void Awake()
     {
-        // --- Combat Triggers ---
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Debug.Log("BoardManager: Player landed on an Easy square. Starting combat...");
-            combatManager.StartCombat(MonsterDifficulty.Easy, currentLoop);
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            Debug.Log("BoardManager: Player landed on a Normal square. Starting combat...");
-            combatManager.StartCombat(MonsterDifficulty.Normal, currentLoop);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("BoardManager: Player landed on a Hard square. Starting combat...");
-            combatManager.StartCombat(MonsterDifficulty.Hard, currentLoop);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Debug.Log("BoardManager: Player landed on a Hard square. Starting combat...");
-            combatManager.StartCombat(MonsterDifficulty.MiniBoss, currentLoop);
-        }
+        instance = this;
+    }
 
-        // --- NEW: Player Data Test Triggers ---
+    private void Start()
+    {
+        GenerateBorderBoard();
+        spawnPlayer.Spawn(squares[0].transform.position);
 
-        // Press 'I' to Add an Item
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            Debug.Log("--- TEST: ADDING ITEM ---");
-            combatManager.playerData.AddItem(testItemToAdd);
-        }
-        
-        // Press 'H' to upgrade Health by +1
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            Debug.Log("--- TEST: UPGRADING HEALTH ---");
-            combatManager.playerData.UpgradeStat("health", 1);
-        }
+    }
+    public void GenerateBorderBoard()
+    {
+        Square square = gameObject.AddComponent<Square>();
+        Shuffle(amountSquares);
 
-        // Press 'D' to upgrade Damage by +1
-        if (Input.GetKeyDown(KeyCode.D))
+        for (int x = 0; x < (boardSize-1)*4; x++)
         {
-            Debug.Log("--- TEST: UPGRADING DAMAGE ---");
-            combatManager.playerData.UpgradeStat("damage", 1);
-        }
-        // Press 'A' to upgrade Armor by +1
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Debug.Log("--- TEST: UPGRADING ARMOR ---");
-            combatManager.playerData.UpgradeStat("armor", 1);
-        }
+            if (x <= boardSize-1)
+            {
+                Vector3 pos = new Vector3(0 * cellSize, x * cellSize - 3.5f, 0f);
+                square.position = pos;
 
-        // Press 'S' to upgrade Energy by +1
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Debug.Log("--- TEST: UPGRADING Energy ---");
-            combatManager.playerData.UpgradeStat("energy", 1);
-        }
-        
-        // Press 'R' to Reset Inventory (Simulate Death)
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            Debug.Log("--- TEST: RESETTING INVENTORY (DEATH) ---");
-            combatManager.playerData.OnPlayerDeath();
-        }
+                if (x == 0)
+                {
+                    square.squareType = SquareType.Start;
+                }
+                else if (x == boardSize - 1)
+                {
+                    square.squareType = SquareType.ShopSquare;
+                }
+                else
+                {
+                    square.squareType = amountSquares[x-1];
+                }
+                
+            }
+            else if ((boardSize-1)< x && x <= (boardSize-1)*2)
+            {
+                Vector3 pos = new Vector3((x-boardSize+1)* cellSize, (boardSize -1)  * cellSize - 3.5f, 0f);
+                square.position = pos;
+                if (x == (boardSize - 1) * 2)
+                {
+                    square.squareType = SquareType.ShopSquare;
+                }
+                else
+                {
+                    square.squareType = amountSquares[x-boardSize];
+                }
+            }
+            else if ((boardSize-1)*2 < x && x <= (boardSize-1)*3)
+            {
+                Vector3 pos = new Vector3((boardSize -1)* cellSize, ((boardSize-1)*3-x)  * cellSize - 3.5f, 0f);
+                square.position = pos;
+                if (x == (boardSize - 1) * 3)
+                {
+                    square.squareType = SquareType.ShopSquare;
+                }
+                else
+                {
+                    square.squareType = amountSquares[x-boardSize*2+1];
+                }
+            }
+            else if ( (boardSize-1)*3 < x && x < (boardSize-1)*4)
+            {
+                Vector3 pos = new Vector3( ((boardSize-1)*4-x) * cellSize, 0  * cellSize - 3.5f, 0f);
+                square.position = pos;
+                square.squareType = amountSquares[x-boardSize*3+2];
+            }
+            
+            GameObject cell = Instantiate(borderCellPrefab, square.position, Quaternion.identity, transform);
+            SquareController controller = cell.gameObject.GetComponent<SquareController>();
+            controller.Initialize(square);
+            cell.name = controller.square.squareType.ToString();
+            squares.Add(cell);
 
-        // Press 'F' for Full Reset (New Game)
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log("--- TEST: FULLY RESETTING PLAYER DATA ---");
-            combatManager.playerData.ResetToDefaults(defaultPlayerStats);
+
         }
     }
+
+    public void DestroyBorderBoard()
+    {
+        foreach (Transform child in transform)
+            Destroy(child.gameObject);
+    }
+    private void Shuffle<T>(IList<T> list)
+    {
+        var rng = new System.Random();
+        int n = list.Count;
+        while (n > 1)
+        {
+            int k = rng.Next(n--);
+            T tmp = list[n];
+            list[n] = list[k];
+            list[k] = tmp;
+        }
+    }
+
+    
+
+
 }
