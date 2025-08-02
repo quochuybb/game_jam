@@ -571,7 +571,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -4338270935410275083, guid: ea9073b3666825570b990f5f140d20a8, type: 3}
+  m_Sprite: {fileID: -6733497901835643050, guid: 9d92cc3023a2d31d683c403cfd691197, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -760,7 +760,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 477473627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b5a40c8b1e2d111bb5e3c9a96835fe7, type: 3}
+  m_Script: {fileID: 11500000, guid: bc6e516a1b281477a87226e661b7afa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   borderCellPrefab: {fileID: 9143759523316483515, guid: 879662eeaf5834930b0a77f9c3ba0a29, type: 3}
@@ -979,7 +979,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 3525723389557069232, guid: ea9073b3666825570b990f5f140d20a8, type: 3}
+  m_Sprite: {fileID: 8513281750956359127, guid: 9d92cc3023a2d31d683c403cfd691197, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

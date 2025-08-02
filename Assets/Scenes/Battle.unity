@@ -249,9 +249,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatManager: {fileID: 422939413}
-  playerHPText: {fileID: 1943161725}
+  playerHPText: {fileID: 0}
   playerEnergyText: {fileID: 862704805}
-  monsterHPText: {fileID: 984484519}
+  monsterHPText: {fileID: 0}
   playerStunIcon: {fileID: 2042364864}
   monsterStunIcon: {fileID: 825737910}
   playerPoisonIcon: {fileID: 622186908}
@@ -408,13 +408,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 477473627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b119e2b1c28f5c96b49a75529ded33d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6058e4a53efebffd2a38e2c166c9f49d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   combatManager: {fileID: 422939413}
   testItemToAdd: {fileID: 11400000, guid: 2548c7c5098e1db4d839ed43b2c50cfd, type: 2}
   defaultPlayerStats: {fileID: 11400000, guid: b22157340e29f274f8953d7693c2de1e, type: 2}
-  testSkillToEquip: {fileID: 11400000, guid: 48772e01faa57bc48bd117aaf69a254b, type: 2}
+  testSkillToEquip: {fileID: 11400000, guid: 7ffa0b173d066374f950b26ba1911423, type: 2}
   currentLoop: 1
 --- !u!1 &483902730
 GameObject:
