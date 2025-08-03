@@ -11,6 +11,8 @@ public class CombatManager : MonoBehaviour
     [Header("Monster & Difficulty Data")]
     public List<MonsterData> allMonsters;
     public List<DifficultyScaling> difficultySettings;
+    public Camera mainCamera;
+    
 
     [Header("Scene Objects")]
     public GameObject combatRootObject;
@@ -109,17 +111,25 @@ public class CombatManager : MonoBehaviour
         StartCoroutine(PlayerTurn());
     }
 
-    void EndBattle()
+    public void EndBattle()
     {
         combatUI.SetActionButtonsInteractable(false, player);
-        if (state == CombatState.WON) { Debug.Log("--- YOU WON THE BATTLE! ---"); }
+        if (state == CombatState.WON) { Debug.Log("--- YOU WON THE BATTLE! ---");
+            ShopManager.instance.coins += 1;
+        }
         else if (state == CombatState.LOST) { Debug.Log("--- YOU WERE DEFEATED ---"); playerData.OnPlayerDeath(); }
 
         if (combatRootObject != null)
         {
             combatRootObject.SetActive(false);
         }
-        OnCombatEnded?.Invoke();
+        MoveCamBack();
+
+    }
+
+    public void MoveCamBack()
+    {
+        mainCamera.transform.position = new Vector3(0f,0f,-10f);
     }
     
     // The rest of the script is unchanged and correct

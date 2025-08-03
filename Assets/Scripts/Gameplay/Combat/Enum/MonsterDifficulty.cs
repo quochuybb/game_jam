@@ -1,7 +1,7 @@
 public enum MonsterDifficulty
 {
-    Easy,
-    Normal,
-    Hard,
+    MonsterSquareEasy,
+    MonsterSquareNormal,
+    MonsterSquareHard,
     MiniBoss
 }

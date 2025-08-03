@@ -17,9 +17,9 @@ public class Dice : MonoBehaviour {
     {
         int randomDiceSide = 0;
         int finalSide = 0;
-        for (int i = 0; i <= 20; i++)
+        for (int i = 0; i <= 15; i++)
         {
-            randomDiceSide = Random.Range(0, 5);
+            randomDiceSide = Random.Range(0, 6);
 
             rend.sprite = diceSides[randomDiceSide];
 

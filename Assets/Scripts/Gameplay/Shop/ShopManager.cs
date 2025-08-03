@@ -12,18 +12,36 @@ public class ShopManager : MonoBehaviour
     public static ShopManager instance;
     public List<ItemShop> itemShops = new List<ItemShop>();
     public List<GameObject> itemPrefabs = new List<GameObject>();
-    //public CombatManager combatManager; 
+    public CombatManager combatManager; 
     public List<Skill> skillShop = new List<Skill>();
     public List<GameObject> skillPrefabs = new List<GameObject>();
     public List<TextMeshProUGUI> TextMeshProUguis = new List<TextMeshProUGUI>();
     public GameObject SkillReplacePanel;
     public Skill skillReplace;
+    public int coins = 0;
+    public GameObject shop;
+    public TextMeshProUGUI coinsText;
+    public Button roll;
 
 
 
     private void Start()
     {
         instance = this;
+    }
+
+    public void CloseShop()
+    {
+        roll.gameObject.SetActive(true);
+
+        shop.gameObject.SetActive(false);
+    }
+
+    public void OpenShop()
+    {
+        GenerateShops();
+        roll.gameObject.SetActive(false);
+        shop.SetActive(true);
     }
 
     public void GenerateShops()
@@ -39,13 +57,17 @@ public class ShopManager : MonoBehaviour
             skillPrefabs[i].name = skillShop[i].skillName;
             TextMeshProUguis[i].text = skillShop[i].skillName;
         }
+        coinsText.text = coins.ToString();
     }
     public void BuySkill(GameObject skill)
     {
+        if (coins == 0) return;
         foreach (var skillS in skillShop)
         {
             if (skill.name == skillS.skillName)
             {
+                coins -= 1;
+                coinsText.text = coins.ToString();
                 skill.SetActive(false);
                 skillReplace = skillS;
                 SkillReplacePanel.SetActive(true);
@@ -56,18 +78,21 @@ public class ShopManager : MonoBehaviour
 
     public void ReplaceSkill(int skill)
     {
-        Debug.LogError(skillReplace);
-        //combatManager.playerData.EquipNewSkill(skillReplace, skill);
+        combatManager.playerData.EquipNewSkill(skillReplace, skill);
         SkillReplacePanel.SetActive(false);
     }
 
     public void BuyItem(GameObject shop)
     {
+        if (coins == 0) return;
+
         foreach (var item in itemShops)
         {
             if (shop.GetComponent<Image>().sprite == item.itemSprite)
             {
-                //combatManager.playerData.AddItem(item.item);
+                combatManager.playerData.AddItem(item.item);
+                coins -= 1;
+                coinsText.text = coins.ToString();
                 shop.SetActive(false);
             }
 

@@ -14,9 +14,7 @@ public class TestCode : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) { combatManager.StartCombat(MonsterDifficulty.Easy, currentLoop); }
-        if (Input.GetKeyDown(KeyCode.W)) { combatManager.StartCombat(MonsterDifficulty.Normal, currentLoop); }
-        if (Input.GetKeyDown(KeyCode.E)) { combatManager.StartCombat(MonsterDifficulty.Hard, currentLoop); }
+
         if (Input.GetKeyDown(KeyCode.R)) { combatManager.StartCombat(MonsterDifficulty.MiniBoss, currentLoop); }
 
 

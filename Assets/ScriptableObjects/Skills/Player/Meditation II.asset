@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef690a2470690ab43936ba32a4d46bd2, type: 3}
   m_Name: Meditation
   m_EditorClassIdentifier: 
-  skillName: Meditation
+  skillName: 'Meditation '
   description: 
   energyCost: 3
   damageMultiplier: 0

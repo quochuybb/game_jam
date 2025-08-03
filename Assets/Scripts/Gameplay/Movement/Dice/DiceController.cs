@@ -10,6 +10,7 @@ public class DiceController : MonoBehaviour
     public void RollBothDicesInOrder()
     {
         StartCoroutine(RollInOrderCoroutine());
+
     }
 
     private IEnumerator RollInOrderCoroutine()
@@ -24,5 +25,9 @@ public class DiceController : MonoBehaviour
         yield return StartCoroutine(dice2.RollTheDice((result) => result2 = result));
         PlayerMovement.instance.Move(result2);
         yield return new WaitUntil(() => PlayerMovement.instance.IsDoneMoving);
+        yield return new WaitForSeconds(1f);
+        PlayerMovement.instance.TriggerSquare();
+
+
     }
 }

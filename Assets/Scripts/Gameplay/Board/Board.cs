@@ -36,7 +36,7 @@ public class Board : MonoBehaviour
         {
             if (x <= boardSize-1)
             {
-                Vector3 pos = new Vector3(0 * cellSize, x * cellSize - 3.5f, 0f);
+                Vector3 pos = new Vector3(0 * cellSize -3.5f, x * cellSize - 3.5f, 0f);
                 square.position = pos;
 
                 if (x == 0)
@@ -55,7 +55,7 @@ public class Board : MonoBehaviour
             }
             else if ((boardSize-1)< x && x <= (boardSize-1)*2)
             {
-                Vector3 pos = new Vector3((x-boardSize+1)* cellSize, (boardSize -1)  * cellSize - 3.5f, 0f);
+                Vector3 pos = new Vector3((x-boardSize+1)* cellSize -3.5f, (boardSize -1)  * cellSize - 3.5f, 0f);
                 square.position = pos;
                 if (x == (boardSize - 1) * 2)
                 {
@@ -68,7 +68,7 @@ public class Board : MonoBehaviour
             }
             else if ((boardSize-1)*2 < x && x <= (boardSize-1)*3)
             {
-                Vector3 pos = new Vector3((boardSize -1)* cellSize, ((boardSize-1)*3-x)  * cellSize - 3.5f, 0f);
+                Vector3 pos = new Vector3((boardSize -1)* cellSize -3.5f, ((boardSize-1)*3-x)  * cellSize - 3.5f, 0f);
                 square.position = pos;
                 if (x == (boardSize - 1) * 3)
                 {
@@ -81,7 +81,7 @@ public class Board : MonoBehaviour
             }
             else if ( (boardSize-1)*3 < x && x < (boardSize-1)*4)
             {
-                Vector3 pos = new Vector3( ((boardSize-1)*4-x) * cellSize, 0  * cellSize - 3.5f, 0f);
+                Vector3 pos = new Vector3( ((boardSize-1)*4-x) * cellSize -3.5f, 0  * cellSize - 3.5f, 0f);
                 square.position = pos;
                 square.squareType = amountSquares[x-boardSize*3+2];
             }

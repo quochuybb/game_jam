@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef690a2470690ab43936ba32a4d46bd2, type: 3}
-  m_Name: Toxic gas
+  m_Name: Toxic Gas
   m_EditorClassIdentifier: 
   skillName: Toxic gas
   description: 
