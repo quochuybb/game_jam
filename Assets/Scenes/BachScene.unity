@@ -382,7 +382,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4158873925009012611, guid: b1232f83770cb204481c60b74cea95b2, type: 3}
   m_PrefabInstance: {fileID: 1864780386166274258}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 665148600}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94a89ed06610e3a46a5c60744a8cfa68, type: 3}
@@ -1449,6 +1449,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622186906}
   m_CullTransparentMesh: 1
+--- !u!1 &665148600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6647986747542063661, guid: b1232f83770cb204481c60b74cea95b2, type: 3}
+  m_PrefabInstance: {fileID: 1864780386166274258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &691837850
 GameObject:
   m_ObjectHideFlags: 0
@@ -3128,6 +3133,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1567034259}
   m_CullTransparentMesh: 1
+--- !u!1 &1584903336 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9078205164667239921, guid: 550ebf49baf13a849a4a0907751a38e4, type: 3}
+  m_PrefabInstance: {fileID: 425831181128030926}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1713543801
 GameObject:
   m_ObjectHideFlags: 0
@@ -3878,6 +3888,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1803938480235301023, guid: 550ebf49baf13a849a4a0907751a38e4, type: 3}
+      propertyPath: opponent
+      value: 
+      objectReference: {fileID: 665148600}
     - target: {fileID: 8460321147701366923, guid: 550ebf49baf13a849a4a0907751a38e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.88
@@ -3932,7 +3946,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1803938480235301023, guid: 550ebf49baf13a849a4a0907751a38e4, type: 3}
   m_PrefabInstance: {fileID: 425831181128030926}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1584903336}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94a89ed06610e3a46a5c60744a8cfa68, type: 3}
@@ -3951,6 +3965,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 787821336}
     m_Modifications:
+    - target: {fileID: 4158873925009012611, guid: b1232f83770cb204481c60b74cea95b2, type: 3}
+      propertyPath: opponent
+      value: 
+      objectReference: {fileID: 1584903336}
     - target: {fileID: 4158873925009012611, guid: b1232f83770cb204481c60b74cea95b2, type: 3}
       propertyPath: statsData
       value: 
