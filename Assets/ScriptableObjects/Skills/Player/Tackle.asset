@@ -18,3 +18,5 @@ MonoBehaviour:
   damageMultiplier: 0.5
   healthToRestore: 0
   stunTurns: 1
+  poisonDamage: 0
+  poisonTurns: 0

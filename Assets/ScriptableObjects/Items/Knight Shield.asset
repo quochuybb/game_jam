@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Knight Shield
   m_EditorClassIdentifier: 
   itemName: Knight Shield
-  description: 
+  description: + 10% base armor
   healthBonusPercent: 0
   armorBonusPercent: 0.1
   damageBonusPercent: 0

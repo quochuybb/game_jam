@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   itemName: Sword
-  description: 
+  description: '+ 5% base armor
+
+    + 5% base damge'
   healthBonusPercent: 0
   armorBonusPercent: 0.05
   damageBonusPercent: 0.05

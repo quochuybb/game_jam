@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Viking Shield
   m_EditorClassIdentifier: 
   itemName: 
-  description: 
+  description: + 10% base health
   healthBonusPercent: 0.1
   armorBonusPercent: 0
   damageBonusPercent: 0
