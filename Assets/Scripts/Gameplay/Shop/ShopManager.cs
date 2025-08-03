@@ -32,15 +32,15 @@ public class ShopManager : MonoBehaviour
 
     public void CloseShop()
     {
-        roll.gameObject.SetActive(true);
-
+        roll.interactable = true;
         shop.gameObject.SetActive(false);
     }
 
     public void OpenShop()
     {
         GenerateShops();
-        roll.gameObject.SetActive(false);
+        roll.interactable = false;
+
         shop.SetActive(true);
     }
 

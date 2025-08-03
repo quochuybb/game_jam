@@ -122,6 +122,8 @@ public class CombatManager : MonoBehaviour
         {
             Debug.Log("--- YOU WERE DEFEATED ---"); playerData.OnPlayerDeath();
             SoundSFXManager.instance.PlayLoseSound();
+            PlayerMovement.instance.Reset();
+
 
         }
 
@@ -131,7 +133,6 @@ public class CombatManager : MonoBehaviour
         }
         MoveCamBack();
         DiceController.instance.roll.interactable = true;
-        PlayerMovement.instance.Reset();
         ShopManager.instance.coins = 0;
 
     }
