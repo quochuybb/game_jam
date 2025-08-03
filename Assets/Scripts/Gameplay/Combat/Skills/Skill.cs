@@ -18,4 +18,6 @@ public class Skill : ScriptableObject
     [Header("Poison Effects")]
     public int poisonDamage = 0;
     public int poisonTurns = 0;
+    
+    
 }
