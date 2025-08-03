@@ -9,6 +9,7 @@ public class Combatant : MonoBehaviour
     public List<Skill> skills;
     [HideInInspector]
     public string characterName;
+    public Animator animator;
     public GameObject opponent;
     private int stunDuration = 0;
     private int poisonDuration = 0;
@@ -45,9 +46,9 @@ public class Combatant : MonoBehaviour
         int damageTaken = Mathf.Max(1, damage - currentStats.currentArmor);
         currentStats.currentHealth -= damageTaken;
         Debug.Log($"{characterName} takes {damageTaken} damage from an attack! Health is now {currentStats.currentHealth}");
-
         if (opponent != null)
         {
+
             StartCoroutine(AttackAnimation());
         }
 
@@ -70,6 +71,7 @@ public class Combatant : MonoBehaviour
         // Apply the final (potentially reduced) healing amount.
         currentStats.currentHealth = Mathf.Min(currentStats.maxHealth, currentStats.currentHealth + finalAmount);
         Debug.Log($"{characterName} heals for {finalAmount}! Health is now {currentStats.currentHealth}");
+        animator.SetTrigger("GetHeal");
     }
 
     public void ApplyStun(int turns)
@@ -131,9 +133,8 @@ public class Combatant : MonoBehaviour
             );
             yield return null;
         }
-        
+        animator.SetTrigger("BeingHurt");
         yield return new WaitForSeconds(0.1f);
-        
         while (Vector3.Distance(opponent.transform.position, opponentOriginalPosition) > 0.1f)
         {
             opponent.transform.position = Vector3.MoveTowards(
