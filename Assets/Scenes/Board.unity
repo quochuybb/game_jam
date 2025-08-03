@@ -676,13 +676,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 477473627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc26dd017561c8427b725fcb6a935f19, type: 3}
+  m_Script: {fileID: 11500000, guid: adb0001c1573dbd9aa02faec9c9e89a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   borderCellPrefab: {fileID: 9143759523316483515, guid: 879662eeaf5834930b0a77f9c3ba0a29, type: 3}
   cellSize: 1
   boardSize: 8
-  amountSquares: 000000000100000002000000030000000500000004000000
+  amountSquares: 000000000100000002000000030000000400000005000000
   squares: []
   spawnPlayer: {fileID: 823500091}
 --- !u!1 &519420028
@@ -1141,7 +1141,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6229718473388512261, guid: 3b73a3815e9f63c3b924133ca571d755, type: 3}
+  m_Sprite: {fileID: 8072762341718227210, guid: ce1be6d0ac0b4f10f9c475552db5522b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1415,7 +1415,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 8833614752114735491, guid: 3b73a3815e9f63c3b924133ca571d755, type: 3}
+  m_Sprite: {fileID: -1602427610151437565, guid: ce1be6d0ac0b4f10f9c475552db5522b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
