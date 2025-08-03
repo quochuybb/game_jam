@@ -30,11 +30,11 @@ public class PlayerMovement : MonoBehaviour
         for (int i = 1; i <= points; i++)
         {
             posPlayerOnBoard += 1;
-            if (posPlayerOnBoard >= BoardManager.instance.squares.Count)
+            if (posPlayerOnBoard >= Board.instance.squares.Count)
             {
                 posPlayerOnBoard = 0;
             }
-            Vector2 pos = BoardManager.instance.squares[posPlayerOnBoard].transform.position;
+            Vector2 pos = Board.instance.squares[posPlayerOnBoard].transform.position;
             SoundSFXManager.instance.PlayMovementSound();
             transform.position = pos;
             yield return new WaitForSeconds(0.25f);

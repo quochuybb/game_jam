@@ -6,9 +6,9 @@ using Unity.Mathematics;
 using Random = Unity.Mathematics.Random;
 
 
-public class BoardManager : MonoBehaviour
+public class Board : MonoBehaviour
 {
-    public static BoardManager instance;
+    public static Board instance;
     public GameObject borderCellPrefab;
     public float cellSize = 1f;
     public int boardSize = 8;
