@@ -120,7 +120,7 @@ public class Combatant : MonoBehaviour
     {
         float speed = 50f;
         float closeDistance = 1.5f;
-        
+        SoundSFXManager.instance.PlayHitSound();
         Vector3 direction = (transform.position - opponent.transform.position).normalized;
         Vector3 targetPosition = transform.position - (direction * closeDistance);
         

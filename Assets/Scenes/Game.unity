@@ -2228,7 +2228,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxSource: {fileID: 585450948}
   diceSound: {fileID: 8300000, guid: 2996fb4fb00bad195ae4c7f3409f0cde, type: 3}
+  hitSound: {fileID: 8300000, guid: a54e0a8c5217f293a847e0baf2295e78, type: 3}
   movementSound: {fileID: 8300000, guid: 1f42a2fb4a9722147a09cd36c387c67c, type: 3}
+  winningSound: {fileID: 8300000, guid: dea9c5a1c23d6817b962a6bb7409e115, type: 3}
+  loseSound: {fileID: 8300000, guid: 266c4940c254a8777a7a4b6d69f812c6, type: 3}
 --- !u!82 &585450948
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5461,6 +5464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dice1: {fileID: 1946494499}
   dice2: {fileID: 121713357}
+  roll: {fileID: 499245414}
 --- !u!4 &1290201923
 Transform:
   m_ObjectHideFlags: 0

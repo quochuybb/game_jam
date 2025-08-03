@@ -116,8 +116,14 @@ public class CombatManager : MonoBehaviour
         combatUI.SetActionButtonsInteractable(false, player);
         if (state == CombatState.WON) { Debug.Log("--- YOU WON THE BATTLE! ---");
             ShopManager.instance.coins += 1;
+            SoundSFXManager.instance.PlayWinningSound();
         }
-        else if (state == CombatState.LOST) { Debug.Log("--- YOU WERE DEFEATED ---"); playerData.OnPlayerDeath(); }
+        else if (state == CombatState.LOST)
+        {
+            Debug.Log("--- YOU WERE DEFEATED ---"); playerData.OnPlayerDeath();
+            SoundSFXManager.instance.PlayLoseSound();
+
+        }
 
         if (combatRootObject != null)
         {
