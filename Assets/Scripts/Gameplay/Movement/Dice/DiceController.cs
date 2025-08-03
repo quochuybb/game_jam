@@ -1,16 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DiceController : MonoBehaviour
 {
     public Dice dice1;
     public Dice dice2;
+    public Button roll;
+    public static DiceController instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void RollBothDicesInOrder()
     {
         StartCoroutine(RollInOrderCoroutine());
-
+        roll.interactable = false;
     }
 
     private IEnumerator RollInOrderCoroutine()

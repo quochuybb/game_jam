@@ -28,8 +28,15 @@ public class PlayerMovement : MonoBehaviour
     {
         StartCoroutine(WaitToContinueMovement(points));
     }
-    
-    
+
+    public void Reset()
+    {
+        posPlayerOnBoard = 0;
+        Vector2 pos = Board.instance.squares[posPlayerOnBoard].transform.position;
+        transform.position = pos;
+        loop = 0;
+        
+    }
     private IEnumerator WaitToContinueMovement(int points)
     {
         for (int i = 1; i <= points; i++)
@@ -83,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
         {
             ShopManager.instance.OpenShop();
         }
+
 
 
     }

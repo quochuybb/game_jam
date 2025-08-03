@@ -124,6 +124,9 @@ public class CombatManager : MonoBehaviour
             combatRootObject.SetActive(false);
         }
         MoveCamBack();
+        DiceController.instance.roll.interactable = true;
+        PlayerMovement.instance.Reset();
+        ShopManager.instance.coins = 0;
 
     }
 
