@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   itemName: Axe
-  description: 
+  description: '+ 5% base health
+
+    + 5% base damage'
   healthBonusPercent: 0.05
   armorBonusPercent: 0
   damageBonusPercent: 0.05

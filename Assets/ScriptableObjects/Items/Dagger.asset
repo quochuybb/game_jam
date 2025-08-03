@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dagger
   m_EditorClassIdentifier: 
   itemName: Dagger
-  description: 
+  description: + 10% base health
   healthBonusPercent: 0
   armorBonusPercent: 0
   damageBonusPercent: 0.1
